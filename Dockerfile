@@ -4,6 +4,8 @@ ENV SURREAL_USER \
     SURREAL_PASS \
     SURREAL_DB_FILE="/surreal/data"
 
+RUN mkdir /surreal
+
 WORKDIR /surreal
 
 EXPOSE 8000

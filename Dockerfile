@@ -11,3 +11,7 @@ WORKDIR ${SURREAL_PATH}
 # RUN apk add curl; curl -sSf https://install.surrealdb.com | sh
 
 EXPOSE 8000
+
+ENTRYPOINT [ "/surreal" ]
+
+CMD [ "start" ]

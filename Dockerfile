@@ -1,13 +1,13 @@
-FROM surrealdb/surrealdb:latest
+FROM docker.io/surrealdb/surrealdb:latest
 
-ENV SURREAL_USER \
-    SURREAL_PASS \
-    SURREAL_DB_FILE="/surreal/data"
+ENV SURREAL_CAPS_ALLOW_ALL="true" \
+    SURREAL_AUTH="true" \
+    SURREAL_USER="admin" \
+    SURREAL_PASS="admin" \
+    SURREAL_PATH="file:///var/surreal/data"
 
-RUN mkdir /surreal
+WORKDIR ${SURREAL_PATH}
 
-WORKDIR /surreal
+# RUN apk add curl; curl -sSf https://install.surrealdb.com | sh
 
 EXPOSE 8000
-
-CMD surreal start -A --auth -u ${SURREAL_USER} -p ${SURREAL_PASS} file://${SURREAL_DB_FILE}
